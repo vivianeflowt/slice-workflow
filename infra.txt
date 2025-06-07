@@ -1,0 +1,18 @@
+#### LOCAL – workstation - 192.168.100.20 - Manager
+
+- CPU: Intel Core i5-13400 (13ª geração), 16 threads, 10 núcleos, até 4.6 GHz
+- RAM: 62 GB DDR4
+- Disco:
+  - /dev/sdb3 (root): 900 GB (152 GB usados)
+  - /dev/md0 (/media/data): 898 GB (699 GB usados)
+  - /dev/sda1 (/mnt/backup): 932 GB (71 GB usados)
+- GPU: NVIDIA GeForce RTX 4060, 8 GB VRAM, driver 570.133.07, CUDA 12.8
+
+#### SERVIDOR – localcloud - 192.168.100.10 - Worker
+
+- CPU: 2× Intel Xeon E5-2680 v4, 56 threads, 28 núcleos, até 2.4 GHz
+- RAM: 62 GB DDR4
+- Disco:
+  - /dev/sda3 (root): 211 GB (17 GB usados)
+  - /dev/mapper/vg0-lv--0 (/media/data): 932 GB (18 GB usados)
+- GPU: AMD Radeon RX 580 2048SP (Polaris 20 XL), driver amdgpu, 8 GB VRAM
