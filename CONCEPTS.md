@@ -1,169 +1,169 @@
-# CONCEPTS.md — Fundamental Principles of the Ecosystem
+# CONCEPTS.md — Princípios Fundamentais do Ecossistema
 
-> **Note:**
-> The concepts defined here are the fundamental laws of the Slice ecosystem.
-> They can only be changed in exceptional circumstances, such as:
+> **Nota:**
+> Os conceitos definidos aqui são as leis fundamentais do ecossistema Slice.
+> Só podem ser alterados em circunstâncias excepcionais, como:
 >
-> - Structural change (e.g. increased resources, new infrastructure, investment entry).
-> - Discovery of a proven superior solution for the concept's objective.
+> - Mudança estrutural (ex: aumento de recursos, nova infraestrutura, entrada de investimento).
+> - Descoberta de uma solução comprovadamente superior para o objetivo do conceito.
 >
-> **We never go backwards:**
-> Changes are only accepted if they improve, simplify or strengthen the concept.
-> We never go back to a less robust, less flexible or less secure state.
+> **Nunca retrocedemos:**
+> Mudanças só são aceitas se melhorarem, simplificarem ou fortalecerem o conceito.
+> Nunca voltamos para um estado menos robusto, menos flexível ou menos seguro.
 
-## 1. Low Resource & Minimum Cost
+## 1. Baixo Recurso & Custo Mínimo
 
-- The project should start from the principle that **there is little resource available** (financial and computational).
-- **Offline first:** Prioritize solutions that work locally, without relying on paid cloud or external services.
-- **Open source whenever possible:** Tools, frameworks and models should be open source, avoiding lock-in and recurring costs.
-- The maximum allowed external dependency is something like Cursor IDE or some open source MLLMs (e.g. Phi, Mistral, etc.), but always seeking the **lowest cost possible**.
-- **Hardware and budget restrictions** should be considered in every technical decision.
+- O projeto parte do princípio de que **há poucos recursos disponíveis** (financeiros e computacionais).
+- **Offline first:** Priorize soluções que funcionem localmente, sem depender de cloud paga ou serviços externos.
+- **Open source sempre que possível:** Ferramentas, frameworks e modelos devem ser open source, evitando lock-in e custos recorrentes.
+- A dependência externa máxima permitida é algo como Cursor IDE ou alguns MLLMs open source (ex: Phi, Mistral, etc.), sempre buscando o **menor custo possível**.
+- **Restrições de hardware e orçamento** devem ser consideradas em toda decisão técnica.
 
-> This concept is the foundation for all future choices: architecture, tools, automation and even project culture.
+> Este conceito é a base para todas as escolhas futuras: arquitetura, ferramentas, automação e até a cultura do projeto.
 
 #### LOCAL – workstation - 192.168.100.20 - Manager
 
-- CPU: Intel Core i5-13400 (13th generation), 16 threads, 10 cores, up to 4.6 GHz
+- CPU: Intel Core i5-13400 (13ª geração), 16 threads, 10 núcleos, até 4.6 GHz
 - RAM: 62 GB DDR4
-- Disk:
-  - /dev/sdb3 (root): 900 GB (152 GB used)
-    - **Note:** Even though there is space, the main HD (root) should be kept free and only used for temporary work. No production or final data here!
-  - /dev/md0 (/media/data): 898 GB (699 GB used)
-    - **Production space:** All ready-to-go data/projects should be moved here.
-  - /dev/sda1 (/mnt/backup): 932 GB (71 GB used)
+- Disco:
+  - /dev/sdb3 (root): 900 GB (152 GB usados)
+    - **Nota:** Mesmo havendo espaço, o HD principal (root) deve ser mantido livre e usado apenas para trabalho temporário. Nada de produção ou dados finais aqui!
+  - /dev/md0 (/media/data): 898 GB (699 GB usados)
+    - **Espaço de produção:** Todos os dados/projetos prontos devem ser movidos para cá.
+  - /dev/sda1 (/mnt/backup): 932 GB (71 GB usados)
 - GPU: NVIDIA GeForce RTX 4060, 8 GB VRAM, driver 570.133.07, CUDA 12.8
 
-#### SERVER – localcloud - 192.168.100.10 - Worker
+#### SERVIDOR – localcloud - 192.168.100.10 - Worker
 
-- CPU: 2× Intel Xeon E5-2680 v4, 56 threads, 28 cores, up to 2.4 GHz
+- CPU: 2× Intel Xeon E5-2680 v4, 56 threads, 28 núcleos, até 2.4 GHz
 - RAM: 62 GB DDR4
-- Disk:
-  - /dev/sda3 (root): 211 GB (17 GB used)
-    - **Note:** Do not use for production, only OS and temporaries.
-  - /dev/mapper/vg0-lv--0 (/media/data): 932 GB (18 GB used)
-    - **Production space:** Final data/projects go here.
+- Disco:
+  - /dev/sda3 (root): 211 GB (17 GB usados)
+    - **Nota:** Não usar para produção, apenas SO e temporários.
+  - /dev/mapper/vg0-lv--0 (/media/data): 932 GB (18 GB usados)
+    - **Espaço de produção:** Dados/projetos finais vão aqui.
 - GPU: AMD Radeon RX 580 2048SP (Polaris 20 XL), driver amdgpu, 8 GB VRAM
 
 ---
 
-## 📦 Storage Strategy
+## 📦 Estratégia de Armazenamento
 
-- **/media/data** on both machines is the production space.
-- The system OS disk (root) should only be used for temporary work, never for final data.
-- This ensures quick reinstallation of the OS without risk of production loss.
-
----
-
-## 🛠️ Workflow Policy: GitHub + Makefile
-
-- **All code must be on GitHub** — versioning, collaboration and traceability guaranteed.
-- **Easy rebuild:** Everything should be easily rebuilt from the repository, without obscure manual steps.
-- **Makefile is mandatory and controls everything:**
-  - Installation (`install`), development (`dev`), production (`start`/`prod`), testing (`test`), cleaning (`clean`), logs, shell, etc.
-  - The standard Makefile is defined in [MAKE_FILES.md](docs/MAKE_FILES.md) and should be followed in all projects/stacks.
-- **Simple flow:**
-  - Downloaded from GitHub? Just run the Makefile to install, run, test, etc.
-  - If it breaks, just clone and rebuild quickly — without dependency on manual environment.
-- **Any project that cannot be controlled 100% by the Makefile is out of standard!**
+- **/media/data** em ambas as máquinas é o espaço de produção.
+- O disco do sistema (root) só deve ser usado para trabalho temporário, nunca para dados finais.
+- Isso garante reinstalação rápida do SO sem risco de perda de produção.
 
 ---
 
-## ❓ Question for the user
+## 🛠️ Política de Workflow: GitHub + Makefile
 
-- Is there any other directory/device that can be used for production, or is **/media/data** the only official source?
-- How do you prefer to organize the flow of "temporary work" vs. "final production"?
-- Do you want to automate the movement of files from root to /media/data?
-- Any backup/routine policy for the external HD or Dropbox?
+- **Todo código deve estar no GitHub** — versionamento, colaboração e rastreabilidade garantidos.
+- **Rebuild fácil:** Tudo deve ser facilmente reconstruído a partir do repositório, sem etapas manuais obscuras.
+- **Makefile é obrigatório e controla tudo:**
+  - Instalação (`install`), desenvolvimento (`dev`), produção (`start`/`prod`), testes (`test`), limpeza (`clean`), logs, shell, etc.
+  - O Makefile padrão está definido em [MAKE_FILES.md](docs/MAKE_FILES.md) e deve ser seguido em todos os projetos/stacks.
+- **Fluxo simples:**
+  - Baixou do GitHub? Só rodar o Makefile para instalar, rodar, testar, etc.
+  - Se quebrar, é só clonar e reconstruir rápido — sem dependência de ambiente manual.
+- **Qualquer projeto que não possa ser controlado 100% pelo Makefile está fora do padrão!**
 
-[CONCEPT] Flexibility and Adaptability
+---
 
-> Every technological choice in the Slice ecosystem prioritizes flexibility, modularity and independence.
-> Frameworks will never be preferred over libraries.
-> The goal is to ensure that the stack is always adaptable, resilient and under total control of the team.
+## ❓ Pergunta para o usuário
+
+- Existe outro diretório/dispositivo que pode ser usado para produção, ou **/media/data** é a única fonte oficial?
+- Como prefere organizar o fluxo de "trabalho temporário" vs. "produção final"?
+- Deseja automatizar a movimentação de arquivos do root para o /media/data?
+- Alguma política de backup/rotina para o HD externo ou Dropbox?
+
+[CONCEITO] Flexibilidade e Adaptabilidade
+
+> Toda escolha tecnológica no ecossistema Slice prioriza flexibilidade, modularidade e independência.
+> Frameworks nunca serão preferidos a bibliotecas.
+> O objetivo é garantir que a stack seja sempre adaptável, resiliente e sob total controle do time.
 >
-> **Note about Python IA:**
-> Python IA does not understand "magic" of opinionated frameworks. The more explicit, modular and based on libraries the stack is, the easier it is to automate, debug and evolve the system. Frameworks that impose rigid concepts, hidden conventions or depend on "dependency injection" make automation and maintenance difficult. The Slice ecosystem always prioritizes simple, transparent stacks under total control of the team and Python IA.
+> **Nota sobre IA Python:**
+> IA Python não entende "mágica" de frameworks opinativos. Quanto mais explícita, modular e baseada em bibliotecas for a stack, mais fácil automatizar, debugar e evoluir o sistema. Frameworks que impõem conceitos rígidos, convenções ocultas ou dependem de "dependency injection" dificultam automação e manutenção. O ecossistema Slice sempre prioriza stacks simples, transparentes e sob total controle do time e da IA Python.
 
-## [CONCEPT] Standard Documentation for Each Aspect
+## [CONCEITO] Documentação Padrão para Cada Aspecto
 
-> **For each aspect of the Slice ecosystem (routes, components, scripts, CI/CD, etc.), there is a reference document that defines:**
+> **Para cada aspecto do ecossistema Slice (rotas, componentes, scripts, CI/CD, etc.), existe um documento de referência que define:**
 >
-> - The official standard ("right way")
-> - Usage examples
-> - What is forbidden (anti-patterns)
-> - How to validate (checklist, linter, tests)
+> - O padrão oficial ("jeito certo")
+> - Exemplos de uso
+> - O que é proibido (anti-padrões)
+> - Como validar (checklist, linter, testes)
 >
-> **Practical example:**
-> If you are creating an Express router, there is a document (e.g. `docs/backend/routers.md`) that shows:
+> **Exemplo prático:**
+> Se você está criando um router Express, existe um documento (ex: `docs/backend/routers.md`) que mostra:
 >
-> - File and folder structure
-> - How to import and export routes
-> - How to document endpoints
-> - How to apply middlewares
-> - Approved code example
-> - Validation checklist (prettier, linter, tests)
+> - Estrutura de arquivos e pastas
+> - Como importar e exportar rotas
+> - Como documentar endpoints
+> - Como aplicar middlewares
+> - Exemplo de código aprovado
+> - Checklist de validação (prettier, linter, testes)
 
-### Example of structure for `docs/backend/routers.md`
+### Exemplo de estrutura para `docs/backend/routers.md`
 
-[CONCEPT] Plug-and-Play Total for Modules
+[CONCEITO] Plug-and-Play Total para Módulos
 
-> Every module in the Slice ecosystem must be totally plug-and-play.
+> Todo módulo do ecossistema Slice deve ser totalmente plug-and-play.
 >
-> - When cloning/downloading the repository, just run the `make install` (or default command defined) and everything should work automatically, without needing manual adjustments, extra configurations or hacks.
-> - The Makefile is the only entry point for installation, configuration, build, tests and execution of the module.
-> - If the module requires system dependencies (Linux), the Makefile should install/configure everything automatically.
-> - If it does not work 100% plug-and-play, the module is rejected until it is fixed.
-> - This applies to all modules: backend, frontend, automation, CI/CD, etc.
-> - This ensures reusability, automation, traceability and easy maintenance throughout the ecosystem.
+> - Ao clonar/baixar o repositório, basta rodar o `make install` (ou comando padrão definido) e tudo deve funcionar automaticamente, sem ajustes manuais, configs extras ou gambiarras.
+> - O Makefile é o único ponto de entrada para instalação, configuração, build, testes e execução do módulo.
+> - Se o módulo exigir dependências de sistema (Linux), o Makefile deve instalar/configurar tudo automaticamente.
+> - Se não funcionar 100% plug-and-play, o módulo é rejeitado até ser corrigido.
+> - Isso vale para todos os módulos: backend, frontend, automação, CI/CD, etc.
+> - Isso garante reusabilidade, automação, rastreabilidade e manutenção fácil em todo o ecossistema.
 
-[CONCEPT] Preference for Well-Typed and Flexible Libraries
+[CONCEITO] Preferência por Bibliotecas Tipadas e Flexíveis
 
-> Whenever possible, the Slice ecosystem should adopt libraries (such as modelfusion) that are well-typed, flexible and do not impose coupling or mandatory structure.
+> Sempre que possível, o ecossistema Slice deve adotar bibliotecas (como modelfusion) que sejam bem tipadas, flexíveis e não imponham acoplamento ou estrutura obrigatória.
 >
-> - Libraries of this type allow composing, integrating and adapting flows and models according to need, without "magic" or dependency on platform.
-> - The unique connector of the ecosystem should be implemented with these libraries, ensuring easy, predictable and standardized integration for all agents (humans, AI, automations).
-> - Opinionated frameworks or those that impose structure will never be preferred over modular and typed libraries.
+> - Bibliotecas desse tipo permitem compor, integrar e adaptar fluxos e modelos conforme a necessidade, sem "mágica" ou dependência de plataforma.
+> - O conector único do ecossistema deve ser implementado com essas bibliotecas, garantindo integração fácil, previsível e padronizada para todos os agentes (humanos, IA, automações).
+> - Frameworks opinativos ou que impõem estrutura nunca serão preferidos a bibliotecas modulares e tipadas.
 
-[CONCEPT] Single Responsibility and Encapsulation of Modules
+[CONCEITO] Responsabilidade Única e Encapsulamento de Módulos
 
-> Each module in the Slice ecosystem has a clear, unique and well-defined function.
+> Cada módulo do ecossistema Slice tem função clara, única e bem definida.
 >
-> - The module must be totally encapsulated: it only exposes its official interface, without leaking internal details or dependencies.
-> - If the same tool is used in more than one module, each use is independent and serves different purposes (e.g. providing AI model vs. training AI).
-> - There is no problem in having redundant tooling, as long as each module maintains its single responsibility and there is no coupling between them.
-> - The goal is to ensure clarity, easy maintenance, reusability and independent evolution of the modules.
+> - O módulo deve ser totalmente encapsulado: só expõe sua interface oficial, sem vazar detalhes internos ou dependências.
+> - Se a mesma ferramenta for usada em mais de um módulo, cada uso é independente e serve a propósitos diferentes (ex: prover modelo IA vs. treinar IA).
+> - Não há problema em ter ferramentas redundantes, desde que cada módulo mantenha sua responsabilidade única e não haja acoplamento entre eles.
+> - O objetivo é garantir clareza, manutenção fácil, reusabilidade e evolução independente dos módulos.
 
-[CONCEPT] 100% Guided Installation, Tested and Informative
+[CONCEITO] Instalação 100% Guiada, Testada e Informativa
 
-> When running `make install` in any module of the Slice ecosystem:
+> Ao rodar `make install` em qualquer módulo do ecossistema Slice:
 >
-> - The entire installation, configuration and initialization process should be automatic and without manual intervention.
-> - At the end, the user should receive clear and objective information, such as:
->   - Access URL (if it is a web service)
->   - Usage commands (if it is CLI)
->   - Status of each step (installed dependencies, service up, ran tests, etc.)
-> - The Makefile should run all necessary tests to ensure that the module is working perfectly.
-> - If any test fails, the installation is interrupted and the error is displayed clearly.
-> - The goal is to ensure that, at the end of the process, the user is sure that everything is working and knows exactly how to access/use the module.
+> - Todo o processo de instalação, configuração e inicialização deve ser automático e sem intervenção manual.
+> - Ao final, o usuário deve receber informações claras e objetivas, como:
+>   - URL de acesso (se for serviço web)
+>   - Comandos de uso (se for CLI)
+>   - Status de cada etapa (dependências instaladas, serviço no ar, testes rodados, etc.)
+> - O Makefile deve rodar todos os testes necessários para garantir que o módulo está funcionando perfeitamente.
+> - Se algum teste falhar, a instalação é interrompida e o erro exibido claramente.
+> - O objetivo é garantir que, ao final do processo, o usuário tenha certeza de que tudo está funcionando e saiba exatamente como acessar/usar o módulo.
 
-[CONCEPT] Strong, Standardized and Inherited Validation
+[CONCEITO] Validação Forte, Padronizada e Herdada
 
-> The entire Slice ecosystem should adopt strong and standardized validation of data and parameters:
+> Todo o ecossistema Slice deve adotar validação forte e padronizada de dados e parâmetros:
 >
-> - **TypeScript/Node:** The standard is the use of Zod for schemas, validation and typing, always inheriting from base/abstract classes to ensure consistency and reuse.
-> - **Python:** It is mandatory to use JSON Schema, as Zod imports/exports JSON Schema, ensuring compatibility between languages and validation throughout the ecosystem.
-> - Any class/module that manipulates data, integrations or configurations should inherit validation from the base/abstract, never implementing manual or ad hoc validation.
-> - This ensures predictability, security, automation and easy integration between modules, languages and agents (humans or AI).
-> - Any module without strong and standardized validation is out of Slice standard.
+> - **TypeScript/Node:** O padrão é o uso de Zod para schemas, validação e tipagem, sempre herdando de classes base/abstratas para garantir consistência e reuso.
+> - **Python:** É obrigatório usar JSON Schema, pois o Zod importa/exporta JSON Schema, garantindo compatibilidade entre linguagens e validação em todo o ecossistema.
+> - Qualquer classe/módulo que manipule dados, integrações ou configs deve herdar validação da base/abstrata, nunca implementar validação manual ou ad hoc.
+> - Isso garante previsibilidade, segurança, automação e integração fácil entre módulos, linguagens e agentes (humanos ou IA).
+> - Qualquer módulo sem validação forte e padronizada está fora do padrão Slice.
 
-[CONCEPT] Every Standard Has Real Justification
+[CONCEITO] Todo Padrão Tem Justificativa Real
 
-> In the Slice ecosystem, **every tool, library, standard or flow choice must be justified by real tests, benchmarks or practical needs of the project**.
-> - We do not adopt anything by fashion, hype or external convention without own validation.
-> - Always document the reason for the choice, preferably with examples, tests or comparisons.
-> - Example: In Express projects, we use `colorette` for terminal colors, as `chalk` in recent versions is ESM-only and causes compatibility issues. Every decision of this type is recorded and justified.
-> - If a better solution appears, we only change after new test and reason registration.
-> - This ensures traceability, continuous learning and avoids arbitrary or contextless decisions.
+> No ecossistema Slice, **toda escolha de ferramenta, biblioteca, padrão ou fluxo deve ser justificada por testes reais, benchmarks ou necessidades práticas do projeto**.
+> - Não adotamos nada por moda, hype ou convenção externa sem validação própria.
+> - Sempre documente o motivo da escolha, de preferência com exemplos, testes ou comparações.
+> - Exemplo: Em projetos Express, usamos `colorette` para cores no terminal, pois `chalk` nas versões recentes é só ESM e causa problemas de compatibilidade. Toda decisão desse tipo é registrada e justificada.
+> - Se aparecer solução melhor, só mudamos após novo teste e registro do motivo.
+> - Isso garante rastreabilidade, aprendizado contínuo e evita decisões arbitrárias ou sem contexto.
 
 [CONCEITO] Claude 4 e Variantes Banidas
 
@@ -172,10 +172,29 @@
 > - A decisão é definitiva, baseada em critérios técnicos, éticos e de alinhamento com os objetivos do projeto.
 > - Qualquer tentativa de uso, integração ou sugestão de Claude 4 será rejeitada automaticamente.
 
-```markdown
-# Official Standard for Express Routers
+[CONCEITO] Validação Antes da Padronização
 
-## File Structure
-- Each resource has its own router file in `src/routes/`
-- Example: `src/routes/userRouter.js`
+> **No ecossistema Slice, nenhuma ferramenta, modelo, guideline, automação ou padrão é adotado ou promovido a oficial sem passar por um processo rigoroso de validação incremental.**
+>
+> - Toda proposta deve ser documentada (ex: em BRAINSTORM.md, CONTEXT.md, etc.) e testada em cenários reais, POCs ou A/B tests.
+> - Só após validação prática, registro de aprendizados e feedback incremental, pode ser "contratada" (adotada como padrão, guideline ou automação oficial).
+> - O ciclo é: Propor → Documentar → Validar → Aprender → Certificar → Padronizar.
+> - Toda decisão, ajuste ou aprendizado deve ser registrado para garantir rastreabilidade e continuidade.
+> - Nada é padronizado por tradição, hype ou convenção externa sem validação própria.
+>
+> **Este conceito é obrigatório e se sobrepõe a qualquer guideline, script ou automação: validação incremental e documentação são pré-requisitos para padronização no Slice.**
+
+[CONCEITO] Restauração Rápida do Ecossistema
+
+> **No Slice, é esperado que falhas graves ocorram durante o percurso, especialmente no aprendizado incremental de agentes/modelos IA.**
+> Por isso, todo o ecossistema deve ser reconstruível do zero, de forma automatizada, confiável e em menos de 30 minutos.
+>
+> - Scripts de bootstrap/reset devem ser idempotentes, versionados e capazes de restaurar todo o ambiente (código, dependências, dados essenciais, containers, configurações) sem intervenção manual obscura.
+> - O fluxo de restauração deve priorizar recursos críticos: serviços essenciais sobem primeiro, modelos e dados pesados são baixados em background/prioridade, garantindo uso imediato do sistema enquanto o restante é restaurado.
+> - A métrica de sucesso é: do zero ao sistema operacional e utilizável em menos de 30 minutos, exceto pelo tempo de download de grandes modelos, que deve ser gerenciado de forma incremental e transparente.
+> - Qualquer solução, modelo ou agente que não respeite esse princípio (ex: frameworks que dificultam automação, modelos que escrevem fora do escopo, agentes que não respeitam isolamento) é banido do ecossistema.
+> - O banimento de Claude 4 e variantes é justificado por não atenderem aos critérios de previsibilidade, isolamento e respeito ao fluxo de restauração rápida.
+>
+> **Este conceito é obrigatório para garantir resiliência, continuidade e aprendizado incremental, mesmo diante de falhas graves ou incidentes inesperados.**
+
 ```
