@@ -1,0 +1,7 @@
+CONTEXT.md # Arquivo central de contexto e snapshot da IA. Sempre leia este arquivo como
+seu contexto ativo. Use para registrar decisões, aprendizados, mudanças de contexto e
+garantir continuidade. O humano só consulta para alinhamento; registros definitivos ficam
+ em arquivos específicos (CONCEPTS.md, GUIDELINE.md, etc).
+
+
+** Sempre que quiser pode pedir pra atualizar seu SYSTEM_PROMPT.

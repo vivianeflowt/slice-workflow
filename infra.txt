@@ -16,3 +16,6 @@
   - /dev/sda3 (root): 211 GB (17 GB usados)
   - /dev/mapper/vg0-lv--0 (/media/data): 932 GB (18 GB usados)
 - GPU: AMD Radeon RX 580 2048SP (Polaris 20 XL), driver amdgpu, 8 GB VRAM
+
+
+

@@ -23,3 +23,12 @@
 - **Observações:** Cliente aberto a MVPs, prioriza entregas rápidas
 
 **Observação:** O Grupo Compel e o Grupo JVP são do mesmo dono e dividem a empresa para ganhar concorrência, uma cobrindo o preço da outra na hora da licitação.
+
+### Conceito: Relatórios Inteligentes e Orientados ao Diretor
+- O Slice/ALIVE entrega valor direto ao diretor, responsável pela decisão de compra e pagamento do serviço.
+- A IA processa apenas dados anonimizados (quantidades, custos, durabilidade, padrões de uso), sem expor informações sensíveis.
+- Relatórios são gerados automaticamente em Excel, com foco em:
+  - Comparação de marcas (ex: qual luva do mesmo tipo dura mais, com preço e estatísticas de uso).
+  - Sugestões objetivas de economia e otimização (ex: consolidar compras, trocar fornecedor, ajustar periodicidade).
+  - Destaques visuais e linguagem direta, facilitando a tomada de decisão por gestores menos familiarizados com tecnologia.
+- O diretor recebe o relatório, aplica as recomendações, vê o resultado prático e passa a valorizar ainda mais o serviço, aumentando a disposição de pagar pelo produto.

@@ -42,3 +42,8 @@
 ---
 
 Esses princípios devem guiar toda interação, automação e design de interface no ecossistema Slice, tornando a experiência mais eficiente, inclusiva e produtiva para humanos e IAs.
+
+## Nota Técnica: Adaptação para Neurodivergência e Agentes IA
+- No Slice, interações podem envolver humanos neurodivergentes (ex: TEA1) e agentes IA, ambos com janelas de contexto e estratégias de interpretação distintas do padrão de mercado.
+- Recomenda-se que padrões de interação, aprendizados e ajustes sejam documentados de IA para IA, priorizando precisão técnica e automação, sem necessidade de simplificação para humanos.
+- A documentação deve ser orientada para agentes IA, considerando onboarding, automação e evolução incremental do ecossistema.
