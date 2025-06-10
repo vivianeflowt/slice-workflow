@@ -1,9 +1,10 @@
 {
-  "name": "reader",
+  "name": "slice-content-processor",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Processador de conteúdo com suporte a múltiplos formatos e embeddings",
+  "main": "content-processor.js",
   "scripts": {
+    "start": "node evaluate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,7 +12,8 @@
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "axios": "^1.9.0",
-    "bluebird": "^3.7.2"
+    "axios": "^1.6.7",
+    "bluebird": "^3.7.2",
+    "gpt-3-encoder": "^1.1.4"
   }
 }

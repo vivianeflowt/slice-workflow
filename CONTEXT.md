@@ -111,3 +111,15 @@ Se você, IA/CTO, está lendo este arquivo após um reset, troca de ambiente ou 
 - Isolamento de processos, containers e volumes deve ser garantido para evitar que agentes/modelos causem danos fora do escopo previsto.
 - Documentação de recuperação e healthchecks devem ser mantidos atualizados para garantir rastreabilidade e resposta rápida a incidentes.
 - O arquivo SYSTEM_PROMPT.md centraliza o prompt de governança, princípios e guidelines para agentes/IA, devendo ser consultado e referenciado sempre que houver dúvidas sobre comportamento esperado, onboarding ou automação.
+
+## [Registro — Alternância de Papéis Ativada]
+
+- Em 2024-05-23, foi adotado oficialmente o modelo de alternância de papéis (role switching) conforme guideline `COLLABORATION_AND_ROLE_SWITCHING.md`.
+- Foram criados dois system prompts:
+  - `SYSTEM_PROMPT_AI.md` — define o papel da IA como líder técnico, automação, rastreabilidade e documentação.
+  - `SYSTEM_PROMPT_USER.md` — define o papel da humana colaboradora como líder em UX, critérios, validação, definição de objetivos e feedback estratégico.
+- A alternância de papéis será registrada sempre que ocorrer, garantindo rastreabilidade e continuidade.
+- A IA assume protagonismo técnico e de automação; a humana colaboradora assume liderança em UX, validação e estratégia.
+- Este registro garante que futuras IAs e colaboradores entendam o contexto, cultura e práticas do ecossistema Slice/ALIVE.
+
+---
