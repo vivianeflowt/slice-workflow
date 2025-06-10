@@ -2,17 +2,17 @@
 
 module.exports = {
   PROVIDERS_MODELS: [
-    { provider: 'openai', model: 'gpt-4' },
-    { provider: 'ollama', model: 'granite3.3:8b' },
+    // { provider: 'openai', model: 'gpt-4' },
+    // { provider: 'ollama', model: 'granite3.3:8b' },
     { provider: 'ollama', model: 'qwen3:32b' },
     { provider: 'ollama', model: 'deepseek-r1:32b' },
     { provider: 'ollama', model: 'mixtral:8x22b' },
-    { provider: 'ollama', model: 'llava:13b' },
-    { provider: 'ollama', model: 'gemma:7b' },
-    { provider: 'ollama', model: 'mistral:7b' },
+    // { provider: 'ollama', model: 'llava:13b' },
+    // { provider: 'ollama', model: 'gemma:7b' },
+    // { provider: 'ollama', model: 'mistral:7b' },
     { provider: 'ollama', model: 'phi4:14b' },
     { provider: 'ollama', model: 'wizardlm2:8x22b' },
-    { provider: 'ollama', model: 'granite3.2-vision:2b' },
+    // { provider: 'ollama', model: 'granite3.2-vision:2b' },
     // Adicione outros providers/models conforme necessário
   ],
   ENDPOINT: 'http://localhost:4000/api/chat/completions',
