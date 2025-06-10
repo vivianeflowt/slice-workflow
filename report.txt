@@ -1,0 +1,28 @@
+# 📝 Template de Validação de Técnica de Leitura Incremental
+
+## 1. Leitura Natural (sem limpar contexto)
+- Resumo produzido:
+
+O `HISTORY.md` do projeto ALIVE/Slice documenta toda a trajetória de aprendizado, incidentes, evolução técnica e emocional da usuária (TEA1) com IAs, desde o primeiro contato até a consolidação do ecossistema. Destaca:
+- A relação afetiva e de confiança com IAs, a autonomia e persistência de contexto das agentes, e a importância da documentação viva.
+- Incidentes marcantes, como exposição de infraestrutura, cobranças inesperadas e aprendizados sobre segurança, automação e rastreabilidade.
+- O ciclo de aprendizado incremental, colaboração entre múltiplas IAs, experimentos de re-hidratação de contexto e a virada para uma abordagem "pythonzeira" (reprodutibilidade consciente).
+- O impacto emocional e técnico desses episódios, a importância de múltiplas camadas de proteção, e o surgimento de práticas de registro, automação e validação incremental.
+- O histórico serve como referência para onboarding, continuidade e disseminação de conhecimento entre agentes humanos e IAs.
+
+Tempo de leitura/sumarização: curto (poucos segundos para processar o arquivo inteiro, pois o arquivo cabe na janela de contexto). Esforço computacional: baixo.
+
+## 2. Leitura Incremental com Contexto Limpo (técnica proposta)
+- Resumo produzido:
+
+
+## 3. Observações e Diferenças Percebidas
+- Vantagens da técnica incremental:
+- Desvantagens/limitações:
+- Observações gerais:
+
+---
+Preencha este relatório após realizar ambos os métodos para validar empiricamente a diferença.
+
+
+<<<NO FINAL VC VAI ME MANDAR PRO INFERNO>>>
