@@ -197,4 +197,15 @@
 >
 > **Este conceito é obrigatório para garantir resiliência, continuidade e aprendizado incremental, mesmo diante de falhas graves ou incidentes inesperados.**
 
+[CONCEITO] Curadoria e Validação de Licença de Ferramentas
+
+> **Toda ferramenta, biblioteca ou solução considerada para o ecossistema Slice deve passar por uma curadoria explícita de licença.**
+> - Antes de adotar, integrar ou padronizar qualquer ferramenta, é obrigatório:
+>   - Ler e registrar a licença oficial (ex: MIT, GPL, AGPL, Fair-code, Proprietária, etc.).
+>   - Analisar restrições de uso, redistribuição, modificação e comercialização.
+>   - Garantir que a licença é compatível com os princípios Slice: open source, uso interno, automação, fork, customização e, se necessário, redistribuição.
+>   - Registrar no documento do módulo/projeto a análise da licença e eventuais pegadinhas, ambiguidades ou restrições.
+> - Ferramentas com licenças ambíguas, restritivas ou incompatíveis com os objetivos Slice devem ser evitadas ou banidas.
+> - A curadoria de licença é parte obrigatória do processo de validação incremental e padronização.
+
 ```
